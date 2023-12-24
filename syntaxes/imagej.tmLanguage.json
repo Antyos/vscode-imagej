@@ -5,7 +5,7 @@
 		"Once accepted there, we are happy to receive an update request."
 	],
 	"version": "https://github.com/redhat-developer/vscode-java/commit/f09b712f5d6d6339e765f58c8dfab3f78a378183",
-	"name": "Java",
+	"name": "ImageJ Macro",
 	"scopeName": "source.ijm",
 	"patterns": [
 		{
@@ -103,9 +103,6 @@
 		{
 			"include": "#code"
 		},
-		{
-			"include": "#module"
-		}
 	],
 	"repository": {
 		"all-types": {
@@ -240,12 +237,6 @@
 									"name": "punctuation.section.inner-class.end.bracket.curly.ijm"
 								}
 							},
-							"name": "meta.inner-class.ijm",
-							"patterns": [
-								{
-									"include": "#class-body"
-								}
-							]
 						}
 					]
 				},
@@ -306,161 +297,6 @@
 				}
 			]
 		},
-		"class": {
-			"begin": "(?=\\w?[\\w\\s-]*\\b(?:class|(?<!@)interface|enum)\\s+[\\w]+)",
-			"end": "}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.end.bracket.curly.ijm"
-				}
-			},
-			"name": "meta.class.ijm",
-			"patterns": [
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"include": "#generics"
-				},
-				{
-					"include": "#comments"
-				},
-				{
-					"captures": {
-						"1": {
-							"name": "storage.modifier.ijm"
-						},
-						"2": {
-							"name": "entity.name.type.class.ijm"
-						}
-					},
-					"match": "(class|(?<!@)interface|enum)\\s+([\\w$]+)",
-					"name": "meta.class.identifier.ijm"
-				},
-				{
-					"begin": "extends",
-					"beginCaptures": {
-						"0": {
-							"name": "storage.modifier.extends.ijm"
-						}
-					},
-					"end": "(?={|implements|permits)",
-					"name": "meta.definition.class.inherited.classes.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"begin": "(implements)\\s",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.implements.ijm"
-						}
-					},
-					"end": "(?=\\s*extends|permits|\\{)",
-					"name": "meta.definition.class.implemented.interfaces.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"begin": "(permits)\\s",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.permits.ijm"
-						}
-					},
-					"end": "(?=\\s*extends|implements|\\{)",
-					"name": "meta.definition.class.permits.classes.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"begin": "{",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.section.class.begin.bracket.curly.ijm"
-						}
-					},
-					"end": "(?=})",
-					"contentName": "meta.class.body.ijm",
-					"patterns": [
-						{
-							"include": "#class-body"
-						}
-					]
-				}
-			]
-		},
-		"class-body": {
-			"patterns": [
-				{
-					"include": "#comments-javadoc"
-				},
-				{
-					"include": "#comments"
-				},
-				{
-					"include": "#enums"
-				},
-				{
-					"include": "#class"
-				},
-				{
-					"include": "#generics"
-				},
-				{
-					"include": "#static-initializer"
-				},
-				{
-					"include": "#class-fields-and-methods"
-				},
-				{
-					"include": "#annotations"
-				},
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"include": "#member-variables"
-				},
-				{
-					"include": "#code"
-				}
-			]
-		},
-		"class-fields-and-methods": {
-			"patterns": [
-				{
-					"begin": "(?=\\=)",
-					"end": "(?=;)",
-					"patterns": [
-						{
-							"include": "#code"
-						}
-					]
-				},
-				{
-					"include": "#methods"
-				}
-			]
-		},
 		"code": {
 			"patterns": [
 				{
@@ -470,19 +306,7 @@
 					"include": "#comments"
 				},
 				{
-					"include": "#enums"
-				},
-				{
-					"include": "#class"
-				},
-				{
-					"include": "#record"
-				},
-				{
 					"include": "#anonymous-block-and-instance-initializer"
-				},
-				{
-					"include": "#try-catch-finally"
 				},
 				{
 					"include": "#assertions"
@@ -500,25 +324,7 @@
 					"include": "#anonymous-classes-and-new"
 				},
 				{
-					"include": "#lambda-expression"
-				},
-				{
-					"include": "#keywords"
-				},
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"include": "#method-call"
-				},
-				{
-					"include": "#function-call"
-				},
-				{
 					"include": "#variables"
-				},
-				{
-					"include": "#variables-local"
 				},
 				{
 					"include": "#objects"
@@ -674,155 +480,6 @@
 				}
 			]
 		},
-		"enums": {
-			"begin": "^\\s*([\\w\\s]*)(enum)\\s+(\\w+)",
-			"beginCaptures": {
-				"1": {
-					"patterns": [
-						{
-							"include": "#storage-modifiers"
-						}
-					]
-				},
-				"2": {
-					"name": "storage.modifier.ijm"
-				},
-				"3": {
-					"name": "entity.name.type.enum.ijm"
-				}
-			},
-			"end": "}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.enum.end.bracket.curly.ijm"
-				}
-			},
-			"name": "meta.enum.ijm",
-			"patterns": [
-				{
-					"begin": "\\b(extends)\\b",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.extends.ijm"
-						}
-					},
-					"end": "(?={|\\bimplements\\b)",
-					"name": "meta.definition.class.inherited.classes.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"begin": "\\b(implements)\\b",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.implements.ijm"
-						}
-					},
-					"end": "(?={|\\bextends\\b)",
-					"name": "meta.definition.class.implemented.interfaces.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"begin": "{",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.section.enum.begin.bracket.curly.ijm"
-						}
-					},
-					"end": "(?=})",
-					"patterns": [
-						{
-							"begin": "(?<={)",
-							"end": "(?=;|})",
-							"patterns": [
-								{
-									"include": "#comments-javadoc"
-								},
-								{
-									"include": "#comments"
-								},
-								{
-									"begin": "\\b(\\w+)\\b",
-									"beginCaptures": {
-										"1": {
-											"name": "constant.other.enum.ijm"
-										}
-									},
-									"end": "(,)|(?=;|})",
-									"endCaptures": {
-										"1": {
-											"name": "punctuation.separator.delimiter.ijm"
-										}
-									},
-									"patterns": [
-										{
-											"include": "#comments-javadoc"
-										},
-										{
-											"include": "#comments"
-										},
-										{
-											"begin": "\\(",
-											"beginCaptures": {
-												"0": {
-													"name": "punctuation.bracket.round.ijm"
-												}
-											},
-											"end": "\\)",
-											"endCaptures": {
-												"0": {
-													"name": "punctuation.bracket.round.ijm"
-												}
-											},
-											"patterns": [
-												{
-													"include": "#code"
-												}
-											]
-										},
-										{
-											"begin": "{",
-											"beginCaptures": {
-												"0": {
-													"name": "punctuation.bracket.curly.ijm"
-												}
-											},
-											"end": "}",
-											"endCaptures": {
-												"0": {
-													"name": "punctuation.bracket.curly.ijm"
-												}
-											},
-											"patterns": [
-												{
-													"include": "#class-body"
-												}
-											]
-										}
-									]
-								}
-							]
-						},
-						{
-							"include": "#class-body"
-						}
-					]
-				}
-			]
-		},
 		"function-call": {
 			"begin": "([A-Za-z_$][\\w$]*)\\s*(\\()",
 			"beginCaptures": {
@@ -846,72 +503,8 @@
 				}
 			]
 		},
-		"generics": {
-			"begin": "<",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.bracket.angle.ijm"
-				}
-			},
-			"end": ">",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.bracket.angle.ijm"
-				}
-			},
-			"patterns": [
-				{
-					"match": "\\b(extends|super)\\b",
-					"name": "storage.modifier.$1.ijm"
-				},
-				{
-					"match": "(?<!\\.)([a-zA-Z$_][a-zA-Z0-9$_]*)(?=\\s*<)",
-					"captures": {
-						"1": {
-							"name": "storage.type.ijm"
-						}
-					}
-				},
-				{
-					"include": "#primitive-arrays"
-				},
-				{
-					"match": "[a-zA-Z$_][a-zA-Z0-9$_]*",
-					"name": "storage.type.generic.ijm"
-				},
-				{
-					"match": "\\?",
-					"name": "storage.type.generic.wildcard.ijm"
-				},
-				{
-					"match": "&",
-					"name": "punctuation.separator.types.ijm"
-				},
-				{
-					"match": ",",
-					"name": "punctuation.separator.delimiter.ijm"
-				},
-				{
-					"match": "\\.",
-					"name": "punctuation.separator.period.ijm"
-				},
-				{
-					"include": "#parens"
-				},
-				{
-					"include": "#generics"
-				},
-				{
-					"include": "#comments"
-				}
-			]
-		},
 		"keywords": {
 			"patterns": [
-				{
-					"match": "\\bthrow\\b",
-					"name": "keyword.control.throw.ijm"
-				},
 				{
 					"match": "\\?|:",
 					"name": "keyword.control.ternary.ijm"
@@ -974,24 +567,6 @@
 				}
 			]
 		},
-		"member-variables": {
-			"begin": "(?=private|protected|public|native|synchronized|abstract|threadsafe|transient|static|final)",
-			"end": "(?=\\=|;)",
-			"patterns": [
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"include": "#variables"
-				},
-				{
-					"include": "#primitive-arrays"
-				},
-				{
-					"include": "#object-types"
-				}
-			]
-		},
 		"method-call": {
 			"begin": "(\\.)\\s*([A-Za-z_$][\\w$]*)\\s*(\\()",
 			"beginCaptures": {
@@ -1029,9 +604,6 @@
 			"name": "meta.method.ijm",
 			"patterns": [
 				{
-					"include": "#storage-modifiers"
-				},
-				{
 					"begin": "(\\w+)\\s*(\\()",
 					"beginCaptures": {
 						"1": {
@@ -1061,9 +633,6 @@
 					]
 				},
 				{
-					"include": "#generics"
-				},
-				{
 					"begin": "(?=\\w.*\\s+\\w+\\s*\\()",
 					"end": "(?=\\s+\\w+\\s*\\()",
 					"name": "meta.method.return-type.ijm",
@@ -1078,9 +647,6 @@
 							"include": "#comments"
 						}
 					]
-				},
-				{
-					"include": "#throws"
 				},
 				{
 					"begin": "{",
@@ -1170,9 +736,6 @@
 		"object-types": {
 			"patterns": [
 				{
-					"include": "#generics"
-				},
-				{
 					"begin": "\\b((?:[A-Za-z_]\\w*\\s*\\.\\s*)*)([A-Z_]\\w*)\\s*(?=\\[)",
 					"beginCaptures": {
 						"1": {
@@ -1239,9 +802,6 @@
 		},
 		"object-types-inherited": {
 			"patterns": [
-				{
-					"include": "#generics"
-				},
 				{
 					"match": "\\b(?:[A-Z]\\w*\\s*(\\.)\\s*)*[A-Z]\\w*\\b",
 					"name": "entity.other.inherited-class.ijm",
@@ -1373,8 +933,8 @@
 			]
 		},
 		"primitive-types": {
-			"match": "\\b(void|boolean|byte|char|short|int|float|long|double)\\b",
-			"name": "storage.type.primitive.ijm"
+			"match": "\\b(var)\\b",
+			"name": "storage.type.var.ijm"
 		},
 		"properties": {
 			"patterns": [
@@ -1424,147 +984,6 @@
 				}
 			]
 		},
-		"record": {
-			"begin": "(?=\\w?[\\w\\s]*\\b(?:record)\\s+[\\w$]+)",
-			"end": "}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.end.bracket.curly.ijm"
-				}
-			},
-			"name": "meta.record.ijm",
-			"patterns": [
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"include": "#generics"
-				},
-				{
-					"include": "#comments"
-				},
-				{
-					"begin": "(record)\\s+([\\w$]+)(<[\\w$]+>)?(\\()",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.ijm"
-						},
-						"2": {
-							"name": "entity.name.type.record.ijm"
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#generics"
-								}
-							]
-						},
-						"4": {
-							"name": "punctuation.definition.parameters.begin.bracket.round.ijm"
-						}
-					},
-					"end": "\\)",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.parameters.end.bracket.round.ijm"
-						}
-					},
-					"name": "meta.record.identifier.ijm",
-					"patterns": [
-						{
-							"include": "#code"
-						}
-					]
-				},
-				{
-					"begin": "(implements)\\s",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.implements.ijm"
-						}
-					},
-					"end": "(?=\\s*)",
-					"name": "meta.definition.class.implemented.interfaces.ijm",
-					"patterns": [
-						{
-							"include": "#object-types-inherited"
-						},
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"include": "#record-body"
-				}
-			]
-		},
-		"record-body": {
-			"begin": "\\{",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.bracket.curly.ijm"
-				}
-			},
-			"end": "(?=})",
-			"name": "meta.record.body.ijm",
-			"patterns": [
-				{
-					"include": "#record-constructor"
-				},
-				{
-					"include": "#class-body"
-				}
-			]
-		},
-		"record-constructor": {
-			"begin": "(?!new)(?=[\\w<].*\\s+)(?=([^\\(=/]|/(?!/))+(?={))",
-			"end": "(})|(?=;)",
-			"endCaptures": {
-				"1": {
-					"name": "punctuation.section.method.end.bracket.curly.ijm"
-				}
-			},
-			"name": "meta.method.ijm",
-			"patterns": [
-				{
-					"include": "#storage-modifiers"
-				},
-				{
-					"begin": "(\\w+)",
-					"beginCaptures": {
-						"1": {
-							"name": "entity.name.function.ijm"
-						}
-					},
-					"end": "(?=\\s*{)",
-					"name": "meta.method.identifier.ijm",
-					"patterns": [
-						{
-							"include": "#comments"
-						}
-					]
-				},
-				{
-					"include": "#comments"
-				},
-				{
-					"begin": "{",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.section.method.begin.bracket.curly.ijm"
-						}
-					},
-					"end": "(?=})",
-					"contentName": "meta.method.body.ijm",
-					"patterns": [
-						{
-							"include": "#code"
-						}
-					]
-				}
-			]
-		},
 		"static-initializer": {
 			"patterns": [
 				{
@@ -1575,10 +994,6 @@
 					"name": "storage.modifier.ijm"
 				}
 			]
-		},
-		"storage-modifiers": {
-			"match": "\\b(public|private|protected|static|final|native|synchronized|abstract|threadsafe|transient|volatile|default|strictfp|sealed|non-sealed)\\b",
-			"name": "storage.modifier.ijm"
 		},
 		"strings": {
 			"patterns": [
@@ -1647,231 +1062,14 @@
 				}
 			]
 		},
-		"throws": {
-			"begin": "throws",
-			"beginCaptures": {
-				"0": {
-					"name": "storage.modifier.ijm"
-				}
-			},
-			"end": "(?={|;)",
-			"name": "meta.throwables.ijm",
-			"patterns": [
-				{
-					"match": ",",
-					"name": "punctuation.separator.delimiter.ijm"
-				},
-				{
-					"match": "[a-zA-Z$_][\\.a-zA-Z0-9$_]*",
-					"name": "storage.type.ijm"
-				},
-				{
-					"include": "#comments"
-				}
-			]
-		},
-		"try-catch-finally": {
-			"patterns": [
-				{
-					"begin": "\\btry\\b",
-					"beginCaptures": {
-						"0": {
-							"name": "keyword.control.try.ijm"
-						}
-					},
-					"end": "}",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.section.try.end.bracket.curly.ijm"
-						}
-					},
-					"name": "meta.try.ijm",
-					"patterns": [
-						{
-							"begin": "\\(",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.section.try.resources.begin.bracket.round.ijm"
-								}
-							},
-							"end": "\\)",
-							"endCaptures": {
-								"0": {
-									"name": "punctuation.section.try.resources.end.bracket.round.ijm"
-								}
-							},
-							"name": "meta.try.resources.ijm",
-							"patterns": [
-								{
-									"include": "#code"
-								}
-							]
-						},
-						{
-							"begin": "{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.section.try.begin.bracket.curly.ijm"
-								}
-							},
-							"end": "(?=})",
-							"contentName": "meta.try.body.ijm",
-							"patterns": [
-								{
-									"include": "#code"
-								}
-							]
-						}
-					]
-				},
-				{
-					"begin": "\\b(catch)\\b",
-					"beginCaptures": {
-						"1": {
-							"name": "keyword.control.catch.ijm"
-						}
-					},
-					"end": "}",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.section.catch.end.bracket.curly.ijm"
-						}
-					},
-					"name": "meta.catch.ijm",
-					"patterns": [
-						{
-							"include": "#comments"
-						},
-						{
-							"begin": "\\(",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.definition.parameters.begin.bracket.round.ijm"
-								}
-							},
-							"end": "\\)",
-							"endCaptures": {
-								"0": {
-									"name": "punctuation.definition.parameters.end.bracket.round.ijm"
-								}
-							},
-							"contentName": "meta.catch.parameters.ijm",
-							"patterns": [
-								{
-									"include": "#comments"
-								},
-								{
-									"include": "#storage-modifiers"
-								},
-								{
-									"begin": "[a-zA-Z$_][\\.a-zA-Z0-9$_]*",
-									"beginCaptures": {
-										"0": {
-											"name": "storage.type.ijm"
-										}
-									},
-									"end": "(\\|)|(?=\\))",
-									"endCaptures": {
-										"1": {
-											"name": "punctuation.catch.separator.ijm"
-										}
-									},
-									"patterns": [
-										{
-											"include": "#comments"
-										},
-										{
-											"match": "\\w+",
-											"captures": {
-												"0": {
-													"name": "variable.parameter.ijm"
-												}
-											}
-										}
-									]
-								}
-							]
-						},
-						{
-							"begin": "{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.section.catch.begin.bracket.curly.ijm"
-								}
-							},
-							"end": "(?=})",
-							"contentName": "meta.catch.body.ijm",
-							"patterns": [
-								{
-									"include": "#code"
-								}
-							]
-						}
-					]
-				},
-				{
-					"begin": "\\bfinally\\b",
-					"beginCaptures": {
-						"0": {
-							"name": "keyword.control.finally.ijm"
-						}
-					},
-					"end": "}",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.section.finally.end.bracket.curly.ijm"
-						}
-					},
-					"name": "meta.finally.ijm",
-					"patterns": [
-						{
-							"begin": "{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.section.finally.begin.bracket.curly.ijm"
-								}
-							},
-							"end": "(?=})",
-							"contentName": "meta.finally.body.ijm",
-							"patterns": [
-								{
-									"include": "#code"
-								}
-							]
-						}
-					]
-				}
-			]
-		},
 		"variables": {
-			"begin": "(?x)\n(?=\n  \\b\n  (\n    (void|boolean|byte|char|short|int|float|long|double)\n    |\n    (?>(\\w+\\.)*[A-Z_]+\\w*) # e.g. `javax.ws.rs.Response`, or `String`\n  )\n  \\b\n  \\s*\n  (\n    <[\\w<>,\\.?\\s\\[\\]]*> # e.g. `HashMap<Integer, String>`, or `List<java.lang.String>`\n  )?\n  \\s*\n  (\n    (\\[\\])* # int[a][a]\n  )?\n  \\s+\n  [A-Za-z_$][\\w$]* # At least one identifier after space\n  ([\\w\\[\\],$][\\w\\[\\],\\s]*)? # possibly primitive array or additional identifiers\n  \\s*(=|:|;)\n)",
+			"begin": "(?=\\b(var)\\b\\s+[A-Za-z_$][\\w$]*\\s*(=|:|;))",
 			"end": "(?=\\=|:|;)",
 			"name": "meta.definition.variable.ijm",
 			"patterns": [
 				{
-					"match": "([A-Za-z$_][\\w$]*)(?=\\s*(\\[\\])*\\s*(;|:|=|,))",
-					"captures": {
-						"1": {
-							"name": "variable.other.definition.ijm"
-						}
-					}
-				},
-				{
-					"include": "#all-types"
-				},
-				{
-					"include": "#code"
-				}
-			]
-		},
-		"variables-local": {
-			"begin": "(?=\\b(var)\\b\\s+[A-Za-z_$][\\w$]*\\s*(=|:|;))",
-			"end": "(?=\\=|:|;)",
-			"name": "meta.definition.variable.local.ijm",
-			"patterns": [
-				{
 					"match": "\\bvar\\b",
-					"name": "storage.type.local.ijm"
+					"name": "storage.type.ijm"
 				},
 				{
 					"match": "([A-Za-z$_][\\w$]*)(?=\\s*(\\[\\])*\\s*(=|:|;))",
