@@ -1,0 +1,25 @@
+{
+  "name": "vscode-imagej",
+  "displayName": "vscode-imagej",
+  "description": "ImageJ Macro syntax highlighting for VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "imagej",
+      "aliases": ["ImageJ", "imagej"],
+      "extensions": [".ijm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "imagej",
+      "scopeName": "source.imagej",
+      "path": "./syntaxes/imagej.tmLanguage.json"
+    }]
+  }
+}
