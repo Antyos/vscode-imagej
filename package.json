@@ -6,6 +6,7 @@
     "engines": {
         "vscode": "^1.85.0"
     },
+    "icon": "256x256.png",
     "categories": [
         "Programming Languages"
     ],
@@ -20,7 +21,11 @@
                 "extensions": [
                     ".ijm"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "dark": "./images/16x16.png",
+                    "light": "./image/16x16.png"
+                }
             }
         ],
         "grammars": [
