@@ -967,6 +967,10 @@
             "match": "\\b(var)\\b",
             "name": "storage.type.var.ijm"
         },
+        "prompt-variables": {
+            "name": "punctuation.prompt-variable.ijm",
+            "match": "^#@\s+"
+        }
         "properties": {
             "patterns": [
                 {
