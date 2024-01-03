@@ -6,48 +6,16 @@
     ],
     "version": "https://github.com/redhat-developer/vscode-java/commit/f09b712f5d6d6339e765f58c8dfab3f78a378183",
     "name": "ImageJ Macro",
+    "fileTypes": ["imagej", "ijm"],
     "scopeName": "source.ijm",
     "patterns": [
         {
-            "begin": "\\b(package)\\b\\s*",
-            "beginCaptures": {
-                "1": {
-                    "name": "keyword.other.package.ijm"
-                }
-            },
             "end": "\\s*(;)",
             "endCaptures": {
                 "1": {
                     "name": "punctuation.terminator.ijm"
                 }
-            },
-            "name": "meta.package.ijm",
-            "contentName": "storage.modifier.package.ijm",
-            "patterns": [
-                {
-                    "include": "#comments"
-                },
-                {
-                    "match": "(?<=\\.)\\s*\\.|\\.(?=\\s*;)",
-                    "name": "invalid.illegal.character_not_allowed_here.ijm"
-                },
-                {
-                    "match": "(?<!_)_(?=\\s*(\\.|;))|\\b\\d+|-+",
-                    "name": "invalid.illegal.character_not_allowed_here.ijm"
-                },
-                {
-                    "match": "[A-Z]+",
-                    "name": "invalid.deprecated.package_name_not_lowercase.ijm"
-                },
-                {
-                    "match": "(?x)\\b(?<!\\$)\n(abstract|assert|boolean|break|byte|case|catch|char|class|\nconst|continue|default|do|double|else|enum|extends|final|\nfinally|float|for|goto|if|implements|import|instanceof|int|\ninterface|long|native|new|non-sealed|package|permits|private|protected|public|\nreturn|sealed|short|static|strictfp|super|switch|syncronized|this|\nthrow|throws|transient|try|void|volatile|while|yield|\ntrue|false|null)\\b",
-                    "name": "invalid.illegal.character_not_allowed_here.ijm"
-                },
-                {
-                    "match": "\\.",
-                    "name": "punctuation.separator.ijm"
-                }
-            ]
+            }
         },
         {
             "begin": "\\b(import)\\b\\s*\\b(static)?\\b\\s",
@@ -504,36 +472,40 @@
             ]
         },
         "function-definition": {
-			"name": "meta.function.ijm",
+            "name": "meta.function.ijm",
             "begin": "(function\\b)\\s*([_$[:alpha:]][_$[:alnum:]]*)?\\s*(\\()",
             "beginCaptures": {
                 "1": { "name": "storage.type.function.ijm" },
                 "2": { "name": "entity.name.function.ijm" },
-                "3": { "name": "punctuation.definition.parameters.begin.bracket.round.ijm" }
+                "3": {
+                    "name": "punctuation.definition.parameters.begin.bracket.round.ijm"
+                }
             },
             "contentName": "meta.function.parameters.ijm",
             "end": "\\)",
             "endCaptures": {
-                "0": { "name": "punctuation.definition.parameters.end.bracket.round.ijm" }
+                "0": {
+                    "name": "punctuation.definition.parameters.end.bracket.round.ijm"
+                }
             },
-            "patterns": [
-                { "include": "#function-parameters" }
-            ]
-		},
+            "patterns": [{ "include": "#function-parameters" }]
+        },
         "function-parameters": {
             "begin": "\\b([[:alpha:]_][[:alnum:]_]*)\\s*(=)(?!=)",
             "beginCaptures": {
-                "1": { "name": "variable.parameter.function.keyword.ijm"},
-                "2": { "name": "keyword.operator.assignment.ijm"}
-            }
-            "end": "\s*(?:(,)|(?=\)))",
+                "1": { "name": "variable.parameter.function.keyword.ijm" },
+                "2": { "name": "keyword.operator.assignment.ijm" }
+            },
+            "end": "\\s*(?:(,)|(?=\\)))",
             "endCaptures": {
-                "1": {"name": "punctuation.separator.parameters.ijm"}
-            }
-            "patterns": [
-                { "include": "$self" }
-            ]
-        }
+                "1": { "name": "punctuation.separator.parameters.ijm" }
+            },
+            "patterns": [{ "include": "$self" }]
+        },
+        "macro-keyword": {
+            "match": "\\bmacro\\b",
+            "name": "storage.type.macro.ijm"
+        },
         "keywords": {
             "patterns": [
                 {
@@ -969,8 +941,8 @@
         },
         "prompt-variables": {
             "name": "punctuation.prompt-variable.ijm",
-            "match": "^#@\s+"
-        }
+            "match": "#@\\s+"
+        },
         "properties": {
             "patterns": [
                 {

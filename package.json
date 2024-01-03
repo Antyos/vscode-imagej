@@ -31,7 +31,7 @@
         "grammars": [
             {
                 "language": "imagej",
-                "scopeName": "source.imagej",
+                "scopeName": "source.ijm",
                 "path": "./syntaxes/imagej.tmLanguage.json"
             }
         ]
