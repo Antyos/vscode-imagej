@@ -503,6 +503,37 @@
                 }
             ]
         },
+        "function-definition": {
+			"name": "meta.function.ijm",
+            "begin": "(function\\b)\\s*([_$[:alpha:]][_$[:alnum:]]*)?\\s*(\\()",
+            "beginCaptures": {
+                "1": { "name": "storage.type.function.ijm" },
+                "2": { "name": "entity.name.function.ijm" },
+                "3": { "name": "punctuation.definition.parameters.begin.bracket.round.ijm" }
+            },
+            "contentName": "meta.function.parameters.ijm",
+            "end": "\\)",
+            "endCaptures": {
+                "0": { "name": "punctuation.definition.parameters.end.bracket.round.ijm" }
+            },
+            "patterns": [
+                { "include": "#function-parameters" }
+            ]
+		},
+        "function-parameters": {
+            "begin": "\\b([[:alpha:]_][[:alnum:]_]*)\\s*(=)(?!=)",
+            "beginCaptures": {
+                "1": { "name": "variable.parameter.function.keyword.ijm"},
+                "2": { "name": "keyword.operator.assignment.ijm"}
+            }
+            "end": "\s*(?:(,)|(?=\)))",
+            "endCaptures": {
+                "1": {"name": "punctuation.separator.parameters.ijm"}
+            }
+            "patterns": [
+                { "include": "$self" }
+            ]
+        }
         "keywords": {
             "patterns": [
                 {
@@ -997,27 +1028,6 @@
         },
         "strings": {
             "patterns": [
-                {
-                    "begin": "\"\"\"",
-                    "beginCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.begin.ijm"
-                        }
-                    },
-                    "end": "\"\"\"",
-                    "endCaptures": {
-                        "0": {
-                            "name": "punctuation.definition.string.end.ijm"
-                        }
-                    },
-                    "name": "string.quoted.triple.ijm",
-                    "patterns": [
-                        {
-                            "match": "(\\\\\"\"\")(?!\")|(\\\\.)",
-                            "name": "constant.character.escape.ijm"
-                        }
-                    ]
-                },
                 {
                     "begin": "\"",
                     "beginCaptures": {
