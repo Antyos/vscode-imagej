@@ -65,25 +65,15 @@
                 }
             ]
         },
-        {
-            "include": "#comments-javadoc"
-        },
-        {
-            "include": "#code"
-        }
+        { "include": "#comments-javadoc" },
+        { "include": "#code" }
     ],
     "repository": {
         "all-types": {
             "patterns": [
-                {
-                    "include": "#primitive-arrays"
-                },
-                {
-                    "include": "#primitive-types"
-                },
-                {
-                    "include": "#object-types"
-                }
+                { "include": "#primitive-arrays" },
+                { "include": "#primitive-types" },
+                { "include": "#object-types" }
             ]
         },
         "annotations": {
@@ -267,45 +257,25 @@
         },
         "code": {
             "patterns": [
-                {
-                    "include": "#annotations"
-                },
-                {
-                    "include": "#comments"
-                },
-                {
-                    "include": "#anonymous-block-and-instance-initializer"
-                },
-                {
-                    "include": "#assertions"
-                },
-                {
-                    "include": "#parens"
-                },
-                {
-                    "include": "#constants-and-special-vars"
-                },
-                {
-                    "include": "#numbers"
-                },
-                {
-                    "include": "#anonymous-classes-and-new"
-                },
-                {
-                    "include": "#variables"
-                },
-                {
-                    "include": "#objects"
-                },
-                {
-                    "include": "#properties"
-                },
-                {
-                    "include": "#strings"
-                },
-                {
-                    "include": "#all-types"
-                },
+                { "include": "#annotations" },
+                { "include": "#comments" },
+                { "include": "#anonymous-block-and-instance-initializer" },
+                { "include": "#assertions" },
+                { "include": "#parens" },
+                { "include": "#constants-and-special-vars" },
+                { "include": "#numbers" },
+                { "include": "#anonymous-classes-and-new" },
+                { "include": "#prompt-variables" },
+                { "include": "#keywords" },
+                { "include": "#method-call" },
+                { "include": "#macro-keyword" },
+                { "include": "#function-call" },
+                { "include": "#function-definition" },
+                { "include": "#variables" },
+                { "include": "#objects" },
+                { "include": "#properties" },
+                { "include": "#strings" },
+                { "include": "#all-types" },
                 {
                     "match": ",",
                     "name": "punctuation.separator.delimiter.ijm"
