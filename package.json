@@ -11,6 +11,14 @@
     "categories": [
         "Programming Languages"
     ],
+    "homepage": "https://github.com/Antyos/vscode-imagej/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/Antyos/vscode-imagej/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Antyos/vscode-imagej"
+    },
     "contributes": {
         "languages": [
             {
