@@ -33,7 +33,7 @@
                 "configuration": "./language-configuration.json",
                 "icon": {
                     "dark": "./images/16x16.png",
-                    "light": "./image/16x16.png"
+                    "light": "./images/16x16.png"
                 }
             }
         ],
